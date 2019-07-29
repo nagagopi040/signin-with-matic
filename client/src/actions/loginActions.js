@@ -14,11 +14,13 @@ function requestLogin(creds) {
 }
 
 function receiveLogin(user) {
+    console.log(user)
     return {
         type: LOGIN_SUCCESS,
         isFetching: false,
         isAuthenticated: true,
-        token: user.token
+        token: user.token,
+        successMessage: user.message
     }
 }
 
@@ -38,33 +40,20 @@ export function loginUser(creds) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `username=${creds.username}&password=${creds.password}`
+        body: `email=${creds.email}&password=${creds.password}`
     }
 
     return dispatch => {
-        // We dispatch requestLogin to kickoff the call to the API
-        dispatch(requestLogin(creds))
-
+        dispatch(requestLogin(creds));
         return fetch('http://localhost:8080/auth/signin', config)
-            .then(response =>
-                response.json().then(user => ({
-                    user,
-                    response
-                }))
-            ).then(({
-                user,
-                response
-            }) => {
-                if (!response.ok) {
-                    // If there was a problem, we want to
-                    // dispatch the error condition
-                    dispatch(loginError(user.message))
-                    return Promise.reject(user)
+            .then(response => response.json())
+            .then( data => {
+                if(data){
+                    localStorage.setItem('token', data.token);
+                    dispatch(receiveLogin(data));
                 } else {
-                    // If login was successful, set the token in local storage
-                    localStorage.setItem('token', user.token)
-                    // Dispatch the success action
-                    dispatch(receiveLogin(user))
+                    dispatch(loginError(data.message))
+                    return Promise.reject(data)
                 }
             }).catch(err => console.log("Error: ", err))
     }

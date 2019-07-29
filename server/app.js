@@ -24,8 +24,10 @@ app.get("/user", verifyToken, (req, res) => {
         if (err) {
             res.sendStatus(403);
         } else {
+            authData.user["message"] = "Signed in successfully, start playng. Enjoy!"
+
             res.json({
-                ...authData,
+                ...authData
             })
         }
     })
@@ -34,7 +36,7 @@ app.get("/user", verifyToken, (req, res) => {
 app.post("/auth/signin", (req, res) => {
     // Mock user
     const user = {
-        name: "Dravid",
+        name: "Rahul Dravid",
         phone: "9876543210",
         country: "India"
     }

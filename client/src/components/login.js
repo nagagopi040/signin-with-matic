@@ -5,19 +5,21 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <h3>Allow access to Game of Theories</h3>
+                <h3 className="text-primary heading-secondary">Allow access to Game of Theories</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label htmlFor="username" />
-                        <input type="text" id="username" ref={(ref) => this.username = ref} className="form-control" placeholder="Username" />
+                        <label htmlFor="email" />
+                        <input required type="email" id="email" ref={(ref) => this.email = ref} className="form-control" placeholder="Email" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" />
-                        <input type="password" id="password" ref={(ref) => this.password = ref} className="form-control" placeholder="Password" />
+                        <input required type="password" id="password" ref={(ref) => this.password = ref} className="form-control" placeholder="Password" />
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                        Sign In
-                    </button>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-outline-primary">Sign In</button>
+                    </div>
+                    <a href="#" className="text-decoration-none" >Forgot password?</a>
+                    <p className="sign-up-link">New account?<a href="#" className="text-decoration-none" > Sign up</a></p>
                 </form>
             </div>
         )
@@ -25,9 +27,9 @@ export class Login extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        const username = this.username
+        const email = this.email
         const password = this.password
-        const creds = { username: username, password: password }
+        const creds = { email: email, password: password }
         this.props.onLoginClick(creds);
     }
 }

@@ -14,7 +14,7 @@ export const userReducer = (state = {
                 isFetching: false,
                 errorMessage: '',
                 user: action.user,
-                successMessage: action.message
+                successMessage: action.successMessage
             }
         case USERDATA_FAILURE:
             return {

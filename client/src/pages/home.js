@@ -32,9 +32,9 @@ class Home extends Component {
 
         return (
             <div>
-                <h2>Welcome to the Game of Theories</h2>
+                <h2 className="heading-primary">Welcome to the Game of Theories</h2>
                 {this.renderRedirect()}
-                <button onClick={this.setRedirect} >Sign In With Matic</button>
+                <button className="btn btn-primary" onClick={this.setRedirect} >Sign In With Matic</button>
             </div>
         )
     }

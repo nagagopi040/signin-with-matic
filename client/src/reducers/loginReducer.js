@@ -14,7 +14,7 @@ export const loginReducer = (state = {
             return {
                 isFetching: false,
                 isAuthenticated: true,
-                sucessMessage: action.sucessMessage,
+                sucessMessage: action.successMessage,
                 errorMessage: ""
             }
         case LOGIN_FAILURE:

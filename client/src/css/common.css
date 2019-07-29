@@ -1,0 +1,46 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    text-align: center;
+}
+
+.heading-primary {
+    padding: 5rem 0;
+}
+
+.heading-secondary {
+    padding: 3rem 0;
+}
+
+.sign-up-link {
+    padding: 2rem 0;
+}
+
+.logout-button {
+    margin: 3rem 0;
+}
+
+.loader {
+  width: 100%;  
+}
+
+.loader-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+}
+
+.loader-icon img {
+    width: 100%;
+}
+
+.user-details {
+    margin: 3rem 0;
+    text-align: left;
+}
+
+.success-message, .error-message {
+    padding: .5rem 0;
+}

@@ -31,7 +31,7 @@ export class Logout extends Component {
         return (
             <>
                 {this.renderRedirect()}
-                <button onClick={this.onLogoutClick} className="btn btn-primary">
+                <button onClick={this.onLogoutClick} className="btn btn-warning logout-button">
                     Logout
                 </button>
             </>

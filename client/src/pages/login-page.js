@@ -43,7 +43,12 @@ class LoginPage extends Component {
         }
 
         if(isFetching) {
-            return "loading ..."
+            return (
+                <div className="loader">
+                    <p className="text-primary">checking</p>
+                    <span className="loader-icon"><img src="https://cdn3.iconfinder.com/data/icons/pictofoundry-pro-vector-set/512/LoadingIndicator-512.png" /></span>
+                </div>
+            )
         }
 
         return (
