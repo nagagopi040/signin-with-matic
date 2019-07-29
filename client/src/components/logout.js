@@ -1,15 +1,40 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 export class Logout extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            redirect: false
+        }
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to="/" />
+        }
+    }
+
+    onLogoutClick = () => {
+        this.setRedirect();
+        this.props.onLogoutClick();
+    }
 
     render() {
-        const { onLogoutClick } = this.props
-
         return (
-            <button onClick={onLogoutClick} className="btn btn-primary">
-                Logout
-            </button>
+            <>
+                {this.renderRedirect()}
+                <button onClick={this.onLogoutClick} className="btn btn-primary">
+                    Logout
+                </button>
+            </>
         )
     }
 }

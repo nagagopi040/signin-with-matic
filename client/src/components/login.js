@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export class Login extends Component {
-
     render() {
-        const { errorMessage } = this.props
-
         return (
             <div>
                 <h3>Allow access to Game of Theories</h3>
@@ -22,27 +19,20 @@ export class Login extends Component {
                         Sign In
                     </button>
                 </form>
-
-                {errorMessage &&
-                    <p>{errorMessage}</p>
-                }
             </div>
         )
     }
 
     onSubmit = (event) => {
         event.preventDefault();
-        var config = {
-            method: "POST"
-        }
-        fetch("http://localhost:8080/auth/sigin", config)
-            .then(response => response.json())
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        const username = this.username
+        const password = this.password
+        const creds = { username: username, password: password }
+        this.props.onLoginClick(creds);
     }
 }
 
 Login.propTypes = {
-    onLoginClick: PropTypes.object.isRequired,
+    onLoginClick: PropTypes.func.isRequired,
     errorMessage: PropTypes.string
 }
